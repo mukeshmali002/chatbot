@@ -9,15 +9,5 @@ https://docs.djangoproject.com/en/3.1/howto/deployment/wsgi/
 
 import os
 from django.core.wsgi import get_wsgi_application
-import logging
-# from decouple import config
-# ENV = config('ENV')
-ENV = 'LOCAL'
-
-if ENV == 'LOCAL':
-    logging.info('[info local] %s', ENV)
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mysite.settings')
-else:
-    logging.info('[info prod] Please check WSGI file to set ENV')
-
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mysite.settings')
 application = get_wsgi_application()

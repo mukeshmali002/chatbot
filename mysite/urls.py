@@ -15,9 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-    
+from django.http.response import HttpResponse   
+
+def health_check(self):
+    msg = 200
+    return HttpResponse(content=msg, content_type='application/json')
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path(r'chatbot/', include('chatbot.urls'), name='chatbot'),
-   
+    # path(r'', health_check),
 ]

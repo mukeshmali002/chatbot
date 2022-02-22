@@ -22,16 +22,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'corsheaders', #  Cross plat form Setting
     'rest_framework.authtoken', 
-    'django_crontab',
-    'util',
-    'chatbot',
 ]
 
 
 REST_FRAMEWORK = {
-    'EXCEPTION_HANDLER': 'mysite.utils.custom_exception_handler', # We create custome exception handeler
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',  # <-- And here
     ],
@@ -45,8 +40,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
-    'corsheaders.middleware.CorsMiddleware',
 
 ]
 
@@ -102,99 +95,5 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-
-CORS_ORIGIN_ALLOW_ALL = True
-CSRF_COOKIE_SECURE = False
-CSRF_USE_SESSIONS = False
-CORS_ALLOW_CREDENTIALS = True
-CORS_ALLOW_METHODS = [
-    'DELETE',
-    'GET',
-    'OPTIONS',
-    'PATCH',
-    'POST',
-    'PUT',
-]
-CORS_ALLOW_HEADERS = [
-    'accept',
-    'accept-encoding',
-    'authorization',
-    'content-type',
-    'dnt',
-    'origin',
-    'user-agent',
-    'x-requested-with',
-    'Authorization',
-    'AppType',
-    'AppVersion',
-    'app_type',
-    'app_version',
-    'x-csrftoken',
-    'x-requested-with',
-    'X-CSRFToken',
-    'x-csrftoken',
-    'X-XSRF-TOKEN',
-    'XSRF-TOKEN',
-    'csrfmiddlewaretoken',
-    'csrftoken',
-    'X-CSRF'
-]
-#  END Cross plat form Setting
-
-LOG_PATH = 'logs'
-FILENAME = 'local'
-
-LOGGING = ({
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'console': {
-            'format': '%(name)-12s [%(levelname)s] %(message)s'
-        },
-        'file': {
-            'format': '%(asctime)s %(name)-12s [%(levelname)s] %(message)s'
-        }
-    },
-    'handlers': {
-        'django_error': {
-            'level': 'ERROR',
-            'class': 'logging.handlers.TimedRotatingFileHandler',
-            'when': 'midnight',
-            'interval': 1,
-            'filename': LOG_PATH + '/' + FILENAME + '-error.log',
-            'formatter': 'file'
-        },
-        'console': {
-            'class': 'logging.StreamHandler',
-            'formatter': 'console'
-        },
-        'file': {
-            'level': 'DEBUG',
-            'class': 'logging.handlers.TimedRotatingFileHandler',
-            'when': 'midnight',
-            'interval': 1,
-            'formatter': 'file',
-            'filename': LOG_PATH + '/' + FILENAME + '.log'
-        }
-    },
-    'loggers': {
-        '': {
-            'level': 'DEBUG',
-            'handlers': ['console', 'file']
-        },
-        'django': {
-            'level': 'ERROR',
-            'handlers': ['django_error']
-        }
-    }
-})
-
-
-RAPIDAPI_KEY = '7168d0faa8mshdf8fa3fde74af83p1e2998jsn8d0b410fb481'
-RAPIDAPI_HOST = 'apidojo-yahoo-finance-v1.p.rapidapi.com'
-
-LAST_TIMESTAMP_GOLD = 0
-LAST_TIMESTAMP_SILVER = 0
-LAST_TIMESTAMP_COPPER = 0
 
 
