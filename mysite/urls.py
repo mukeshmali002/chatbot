@@ -21,6 +21,7 @@ def health_check(self):
     msg = 200
     return HttpResponse(content=msg, content_type='application/json')
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path(r'', health_check),
